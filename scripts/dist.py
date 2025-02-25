@@ -145,7 +145,7 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest/artificial/news/target/rest-news-sut.jar", DIST)
     copy(folder + "/em/external/rest/news/target/rest-news-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest-gui/ocvn/web/target/ocvn-rest-sut.jar", DIST)
+    # copy(folder + "/cs/rest-gui/ocvn/web/target/ocvn-rest-sut.jar", DIST)
     copy(folder + "/em/external/rest/ocvn/target/ocvn-rest-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest/original/languagetool/languagetool-server/target/languagetool-sut.jar", DIST)
@@ -202,7 +202,7 @@ def build_jdk_11_maven():
     copy(folder + "/cs/rest/cwa-verification-server/target/cwa-verification-sut.jar", DIST)
     copy(folder + "/em/external/rest/cwa-verification/target/cwa-verification-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/graphql/timbuctoo/timbuctoo-instancev4/target/timbuctoo-sut.jar", DIST)
+    # copy(folder + "/cs/graphql/timbuctoo/timbuctoo-instancev4/target/timbuctoo-sut.jar", DIST)
     copy(folder + "/em/external/graphql/timbuctoo/target/timbuctoo-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest-gui/market/market-rest/target/market-sut.jar", DIST)
@@ -231,8 +231,8 @@ def build_jdk_17_maven():
     copy(folder + "/cs/grpc/signal-registration/target/signal-registration-sut.jar", DIST)
     copy(folder + "/em/external/grpc/signal-registration/target/signal-registration-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
-    copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
+    # copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
 
 
 ####################
@@ -241,7 +241,7 @@ def build_jdk_11_gradle():
     env_vars["JAVA_HOME"] = JAVA_HOME_11
     folder = "jdk_11_gradle"
 
-    command = "gradlew"
+    command = "./gradlew"
 
     if platform.system() == "Darwin":
         # make sure gradlew command is executable
@@ -269,7 +269,7 @@ def build_jdk_17_gradle():
     env_vars["JAVA_HOME"] = JAVA_HOME_17
     folder = "jdk_17_gradle"
 
-    command = "gradlew"
+    command = "./gradlew"
 
     if platform.system() == "Darwin":
 

@@ -13,7 +13,7 @@
 
 
     <modules>
-        <module>familie-ba-sak</module>
+        <!-- <module>familie-ba-sak</module> -->
 <!--        DISABLED FOR NOW-->
 <!--        <module>familie-tilbake</module>-->
 <!--        <module>tiltaksgjennomforing-api</module>-->

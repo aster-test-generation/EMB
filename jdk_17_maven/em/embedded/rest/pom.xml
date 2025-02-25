@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>familie-ba-sak</module>
+        <!-- <module>familie-ba-sak</module> -->
         <!--        DISABLED FOR NOW-->
 <!--        <module>signal-server</module>-->
 <!--        <module>familie-tilbake</module>-->
