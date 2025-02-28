@@ -13,9 +13,9 @@
 
     <modules>
         <module>rest</module>
-        <module>graphql</module>
-        <module>thrift</module>
-        <module>grpc</module>
+        <!-- <module>graphql</module> -->
+        <!-- <module>thrift</module> -->
+        <!-- <module>grpc</module> -->
     </modules>
 
     <dependencies>

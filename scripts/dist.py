@@ -146,7 +146,7 @@ def build_jdk_8_maven():
     copy(folder + "/em/external/rest/news/target/rest-news-evomaster-runner.jar", DIST)
 
     # copy(folder + "/cs/rest-gui/ocvn/web/target/ocvn-rest-sut.jar", DIST)
-    copy(folder + "/em/external/rest/ocvn/target/ocvn-rest-evomaster-runner.jar", DIST)
+    # copy(folder + "/em/external/rest/ocvn/target/ocvn-rest-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest/original/languagetool/languagetool-server/target/languagetool-sut.jar", DIST)
     copy(folder + "/em/external/rest/languagetool/target/languagetool-evomaster-runner.jar", DIST)
@@ -163,28 +163,28 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest-gui/genome-nexus/web/target/genome-nexus-sut.jar", DIST)
     copy(folder + "/em/external/rest/genome-nexus/target/genome-nexus-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/graphql/petclinic-graphql/target/petclinic-graphql-sut.jar", DIST)
-    copy(folder + "/em/external/graphql/petclinic-graphql/target/petclinic-graphql-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/graphql/petclinic-graphql/target/petclinic-graphql-sut.jar", DIST)
+    # copy(folder + "/em/external/graphql/petclinic-graphql/target/petclinic-graphql-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/graphql/graphql-ncs/target/graphql-ncs-sut.jar", DIST)
-    copy(folder + "/em/external/graphql/graphql-ncs/target/graphql-ncs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/graphql/graphql-ncs/target/graphql-ncs-sut.jar", DIST)
+    # copy(folder + "/em/external/graphql/graphql-ncs/target/graphql-ncs-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/graphql/graphql-scs/target/graphql-scs-sut.jar", DIST)
-    copy(folder + "/em/external/graphql/graphql-scs/target/graphql-scs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/graphql/graphql-scs/target/graphql-scs-sut.jar", DIST)
+    # copy(folder + "/em/external/graphql/graphql-scs/target/graphql-scs-evomaster-runner.jar", DIST)
 
     # thrift RPC
-    copy(folder + "/cs/rpc/thrift/artificial/thrift-ncs/target/rpc-thrift-ncs-sut.jar", DIST)
-    copy(folder + "/em/external/thrift/ncs/target/rpc-thrift-ncs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rpc/thrift/artificial/thrift-ncs/target/rpc-thrift-ncs-sut.jar", DIST)
+    # copy(folder + "/em/external/thrift/ncs/target/rpc-thrift-ncs-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rpc/thrift/artificial/thrift-scs/target/rpc-thrift-scs-sut.jar", DIST)
-    copy(folder + "/em/external/thrift/scs/target/rpc-thrift-scs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rpc/thrift/artificial/thrift-scs/target/rpc-thrift-scs-sut.jar", DIST)
+    # copy(folder + "/em/external/thrift/scs/target/rpc-thrift-scs-evomaster-runner.jar", DIST)
 
     # grpc RPC
-    copy(folder + "/cs/rpc/grpc/artificial/grpc-ncs/target/rpc-grpc-ncs-sut.jar", DIST)
-    copy(folder + "/em/external/grpc/ncs/target/rpc-grpc-ncs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rpc/grpc/artificial/grpc-ncs/target/rpc-grpc-ncs-sut.jar", DIST)
+    # copy(folder + "/em/external/grpc/ncs/target/rpc-grpc-ncs-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rpc/grpc/artificial/grpc-scs/target/rpc-grpc-scs-sut.jar", DIST)
-    copy(folder + "/em/external/grpc/scs/target/rpc-grpc-scs-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rpc/grpc/artificial/grpc-scs/target/rpc-grpc-scs-sut.jar", DIST)
+    # copy(folder + "/em/external/grpc/scs/target/rpc-grpc-scs-evomaster-runner.jar", DIST)
 
     ind0 = os.environ.get('SUT_LOCATION_IND0', '')
     if ind0 == '':
@@ -203,7 +203,7 @@ def build_jdk_11_maven():
     copy(folder + "/em/external/rest/cwa-verification/target/cwa-verification-evomaster-runner.jar", DIST)
 
     # copy(folder + "/cs/graphql/timbuctoo/timbuctoo-instancev4/target/timbuctoo-sut.jar", DIST)
-    copy(folder + "/em/external/graphql/timbuctoo/target/timbuctoo-evomaster-runner.jar", DIST)
+    # copy(folder + "/em/external/graphql/timbuctoo/target/timbuctoo-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest-gui/market/market-rest/target/market-sut.jar", DIST)
     copy(folder + "/em/external/rest/market/target/market-evomaster-runner.jar", DIST)
@@ -225,11 +225,11 @@ def build_jdk_17_maven():
     folder = "jdk_17_maven"
     callMaven(folder, JAVA_HOME_17)
 
-    copy(folder + "/cs/web/spring-petclinic/target/spring-petclinic-sut.jar", DIST)
-    copy(folder + "/em/external/web/spring-petclinic/target/spring-petclinic-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/web/spring-petclinic/target/spring-petclinic-sut.jar", DIST)
+    # copy(folder + "/em/external/web/spring-petclinic/target/spring-petclinic-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/grpc/signal-registration/target/signal-registration-sut.jar", DIST)
-    copy(folder + "/em/external/grpc/signal-registration/target/signal-registration-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/grpc/signal-registration/target/signal-registration-sut.jar", DIST)
+    # copy(folder + "/em/external/grpc/signal-registration/target/signal-registration-evomaster-runner.jar", DIST)
 
     # copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
     # copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
@@ -258,8 +258,8 @@ def build_jdk_11_gradle():
         exit(1)
 
     # Copy JAR files
-    copy(folder + "/cs/graphql/patio-api/build/libs/patio-api-sut.jar", DIST)
-    copy(folder + "/em/external/graphql/patio-api/build/libs/patio-api-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/graphql/patio-api/build/libs/patio-api-sut.jar", DIST)
+    # copy(folder + "/em/external/graphql/patio-api/build/libs/patio-api-evomaster-runner.jar", DIST)
     copy(folder + "/cs/rest/reservations-api/build/libs/reservations-api-sut.jar", DIST)
     copy(folder + "/em/external/rest/reservations-api/build/libs/reservations-api-evomaster-runner.jar", DIST)
 

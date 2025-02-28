@@ -12,8 +12,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>web</module>
-        <module>grpc</module>
+        <!-- <module>web</module> -->
+        <!-- <module>grpc</module> -->
         <module>rest</module>
     </modules>
 
