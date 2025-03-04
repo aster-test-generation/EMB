@@ -42,9 +42,6 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
         ExternalEvoMasterController controller =
                 new ExternalEvoMasterController(controllerPort, jarLocation, sutPort, timeoutSeconds, command);
-
-
-        controller.setJaCoCo("/home/rhuang329/aster-it/target/realtime-jacoco-agent-1.0-SNAPSHOT.jar", "/home/rhuang329/jacoco-0.8.12/lib/jacococli.jar", "/home/rhuang329/EvoMasterv3.4.0/exec/restcountries__wbEXP__12410__jacoco.exec", 8000);
         InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
 
         starter.start();
