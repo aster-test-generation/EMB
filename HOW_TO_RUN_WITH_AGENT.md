@@ -13,7 +13,7 @@ Let's call the base directory of this project `EMB_BASE`, e.g.,
 export EMB_BASE=/home/rkh/25spring/aster/EMBv3.4.0
 ```
 
-Place the agent `realtime-jacoco-agent-1.0-SNAPSHOT.jar` in `$EMB_BASE`.
+Place the agent `realtime-jacoco-agent-1.0-SNAPSHOT.jar` in `EMB_BASE`.
 
 ### Genome Nexus
 
