@@ -35,7 +35,7 @@ export projectPackage=org/cbioportal/genome_nexus
 
 Run the service:
 ```
-java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp ./target/classes/:{copy the content in cp.txt} em.embedded.org.cbioportal.genome_nexus.EmbeddedEvoMasterController
+java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.cbioportal.genome_nexus.EmbeddedEvoMasterController
 ```
 
 The service should be running at port `12345` with jacoco agent on 8000. Modify line 81 in `jdk_8_maven/em/embedded/rest/genome-nexus/src/main/java/em/embedded/org/cbioportal/genome_nexus/EmbeddedEvoMasterController.java` to change the service port.
@@ -60,7 +60,7 @@ export projectPackage=org/javiermf/features
 
 Run the service:
 ```
-java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp ./target/classes/:{copy the content in cp.txt} em.embedded.org.javiermf.features.EmbeddedEvoMasterController
+java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.javiermf.features.EmbeddedEvoMasterController
 ```
 
 The service should be running at port `12345` with jacoco agent on 8000. Modify line 67 in `jdk_8_maven/em/embedded/rest/features-service/src/main/java/em/embedded/org/javiermf/features/EmbeddedEvoMasterController.java` to change the service port.
