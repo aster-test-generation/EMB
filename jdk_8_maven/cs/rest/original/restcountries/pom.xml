@@ -129,7 +129,7 @@
                     </dependencyGroup>
                 </copyDependencies>
                 <jvmOptions>
-                    <option>-javaagent:${project.basedir}/realtime-jacoco-agent-1.0-SNAPSHOT.jar</option>
+                    <option>-javaagent:${project.basedir}/../../../../../realtime-jacoco-agent-1.0-SNAPSHOT.jar</option>
                 </jvmOptions>
                 </configuration>
                 <executions>
