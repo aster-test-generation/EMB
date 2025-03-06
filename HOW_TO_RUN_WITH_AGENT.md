@@ -65,6 +65,11 @@ java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-a
 
 The service should be running at port `12345` with jacoco agent on 8000. Modify line 67 in `jdk_8_maven/em/embedded/rest/features-service/src/main/java/em/embedded/org/javiermf/features/EmbeddedEvoMasterController.java` to change the service port.
 
+The spec is available at `http://localhost:12345/swagger.json`. To check if it is running, send a request:
+```
+curl -i http://localhost:12345/products
+```
+
 ### restcountries
 
 Switch to `$EMB_BASE/jdk_8_maven/cs/rest/original/restcountries`
@@ -102,3 +107,8 @@ java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-a
 ```
 
 The service should be running at port `8081` with jacoco agent on 8000. 
+
+The spec is available at `http://localhost:8081/v2/swagger`. To check if it is running, send a request:
+```
+curl -i http://localhost:8081/v2/languages
+```
