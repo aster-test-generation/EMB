@@ -1,5 +1,7 @@
 ## Build
 
+For EMB, we need to add a GitHub token so that it can pull the docker container from GitHub. Please refer to the readme of EMB (using this repository): https://github.com/WebFuzzing/EMB?tab=readme-ov-file#using-this-repository
+
 Use the script to build the whole benchmark
 ```
 ./scripts/dist.py
