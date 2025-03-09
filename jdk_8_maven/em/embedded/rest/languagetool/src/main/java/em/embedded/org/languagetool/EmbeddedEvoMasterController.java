@@ -27,9 +27,10 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     public static void main(String[] args){
 
         SutController controller = new EmbeddedEvoMasterController();
-        InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
+        // InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
 
-        starter.start();
+        // starter.start();
+        controller.startSut();
     }
 
     @Override
@@ -61,7 +62,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public String startSut() {
-        HTTPServerConfig config = new HTTPServerConfig(0);
+        HTTPServerConfig config = new HTTPServerConfig(8081);
         //TODO looks like there is a DB, but only for logs???
         DatabaseAccess.init(config);
 

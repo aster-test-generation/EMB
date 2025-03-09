@@ -91,9 +91,15 @@ mvn clean install -DskipTest liberty:run
 
 Service is running on `http://localhost:9080/restcountries-2.0.6-SNAPSHOT/`
 
+
+Start EvoMaster in Black-Box Mode (change the seed 105 and the 105 in outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl ~/EMBv3.4.0/jdk_8_maven/cs/rest/origal/restcountries/src/main/resources/static/openapi.yaml --bbTargetUrl http://localhost:9080/restcountries-2.0.6-SNAPSHOT/ --seed 105 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_5 --outputFolder "/home/rhuang329/aster-exp/bb/tests/restcountries_evomaster_bb_v2__S105_11890"
+```
+
 ### Language Tool
 
-Switch to `$EMB_BASE/jdk_8_maven/cs/rest/original/languagetool/languagetool-server`
+Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/languagetool`
 
 Set up necessary env vars:
 
@@ -105,10 +111,10 @@ export projectPackage=org/languagetool
 
 Run the service:
 ```
-java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar"  -jar target/languagetool-sut.jar
+java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.languagetool.EmbeddedEvoMasterController
 ```
 
-The service should be running at port `8081` with jacoco agent on 8000. 
+The service should be running at port `8081` with jacoco agent on 8000. odify line 65 in `jdk_8_maven/em/embedded/rest/languagetool/src/main/java/em/embedded/org/languagetool/EmbeddedEvoMasterController.java` to change the service port.
 
 The spec is available at `http://localhost:8081/v2/swagger`. To check if it is running, send a request:
 ```
