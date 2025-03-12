@@ -8,7 +8,7 @@ Use the script to build the whole benchmark
 ```
 If some jars are not found, it is because they are packaged as wars. Try to change the corresponding names in the script to wars.
 
-## Running in White-Box Mode
+## Running in Black-Box Mode
 
 Let's call the base directory of this project `EMB_BASE`, e.g.,
 ```
@@ -42,6 +42,13 @@ java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-a
 
 The service should be running at port `12345` with jacoco agent on 8000. Modify line 81 in `jdk_8_maven/em/embedded/rest/genome-nexus/src/main/java/em/embedded/org/cbioportal/genome_nexus/EmbeddedEvoMasterController.java` to change the service port.
 
+The spec is available at `hhtp://localhost:12345/v2/api-docs`.
+
+Start EvoMaster in black-box mode (change the seed 100 and outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/genome-nexus_evomaster_bb_v2__S100_10420"
+```
+
 ### Feature-Services
 
 Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/features-service`
@@ -72,6 +79,11 @@ The spec is available at `http://localhost:12345/swagger.json`. To check if it i
 curl -i http://localhost:12345/products
 ```
 
+Start EvoMaster in black-box mode (change the seed 101 and the 101 in outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/swagger.json --bbTargetUrl http://localhost:12345 --seed 101 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/features-service_evomaster_bb_v2__S101_10420"
+```
+
 ### restcountries
 
 Switch to `$EMB_BASE/jdk_8_maven/cs/rest/original/restcountries`
@@ -89,17 +101,28 @@ Run
 mvn clean install -DskipTest liberty:run
 ```
 
-Service is running on `http://localhost:9080/restcountries-2.0.6-SNAPSHOT/`
+Service is running on `http://localhost:9080/restcountries-2.0.6-SNAPSHOT/`. Modify ports in `$EMB_BASE/jdk_8_maven/cs/rest/original/restcountries/src/main/liberty/config/boostrap.properties` to change the service port.
 
-
-Start EvoMaster in Black-Box Mode (change the seed 105 and the 105 in outputFolder if necessary):
+The spec is available at `http://localhost:9080/restcountries-2.0.6-SNAPSHOT/openapi.yaml`. To check if it is running, send a request:
 ```
-"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl ~/EMBv3.4.0/jdk_8_maven/cs/rest/origal/restcountries/src/main/resources/static/openapi.yaml --bbTargetUrl http://localhost:9080/restcountries-2.0.6-SNAPSHOT/ --seed 105 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_5 --outputFolder "/home/rhuang329/aster-exp/bb/tests/restcountries_evomaster_bb_v2__S105_11890"
+curl -i "http://localhost:9080/restcountries-2.0.6-SNAPSHOT/rest/v2"
+```
+
+
+Start EvoMaster in black-box mode (change the seed 105 and the 105 in outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl ~/EMBv3.4.0/jdk_8_maven/cs/rest/origal/restcountries/src/main/resources/static/openapi.yaml --bbTargetUrl http://localhost:9080/restcountries-2.0.6-SNAPSHOT/ --seed 105 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/restcountries_evomaster_bb_v2__S105_11890"
 ```
 
 ### Language Tool
 
 Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/languagetool`
+
+Run
+```
+mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
+```
+to write the whole list of dependencies to `cp.txt`.
 
 Set up necessary env vars:
 
@@ -120,3 +143,4 @@ The spec is available at `http://localhost:8081/v2/swagger`. To check if it is r
 ```
 curl -i http://localhost:8081/v2/languages
 ```
+
