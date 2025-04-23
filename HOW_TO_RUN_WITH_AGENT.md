@@ -40,7 +40,7 @@ Run the service:
 java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.cbioportal.genome_nexus.EmbeddedEvoMasterController
 ```
 
-The service should be running at port `12345` with jacoco agent on 8000. Modify line 81 in `jdk_8_maven/em/embedded/rest/genome-nexus/src/main/java/em/embedded/org/cbioportal/genome_nexus/EmbeddedEvoMasterController.java` to change the service port.
+The service should be running at port `12345` with jacoco agent on `8000`. Modify line 81 in `jdk_8_maven/em/embedded/rest/genome-nexus/src/main/java/em/embedded/org/cbioportal/genome_nexus/EmbeddedEvoMasterController.java` to change the service port.
 
 The spec is available at `hhtp://localhost:12345/v2/api-docs`.
 
@@ -49,7 +49,7 @@ Start EvoMaster in black-box mode (change the seed 100 and outputFolder if neces
 "/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/genome-nexus_evomaster_bb_v2__S100_10420"
 ```
 
-## Option 2:
+#### Option 2:
 Change the pom.xml of genome-nexus/web/pom.xml by the below content.
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -338,6 +338,7 @@ Change the pom.xml of genome-nexus/web/pom.xml by the below content.
 </project>
 ```
 Run ``mvn clean package liberty:run -DskipTests``
+
 ### Feature-Services
 
 Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/features-service`
@@ -361,7 +362,7 @@ Run the service:
 java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.javiermf.features.EmbeddedEvoMasterController
 ```
 
-The service should be running at port `12345` with jacoco agent on 8000. Modify line 67 in `jdk_8_maven/em/embedded/rest/features-service/src/main/java/em/embedded/org/javiermf/features/EmbeddedEvoMasterController.java` to change the service port.
+The service should be running at port `12345` with jacoco agent on `8000`. Modify line 67 in `jdk_8_maven/em/embedded/rest/features-service/src/main/java/em/embedded/org/javiermf/features/EmbeddedEvoMasterController.java` to change the service port.
 
 The spec is available at `http://localhost:12345/swagger.json`. To check if it is running, send a request:
 ```
@@ -426,7 +427,7 @@ Run the service:
 java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.languagetool.EmbeddedEvoMasterController
 ```
 
-The service should be running at port `8081` with jacoco agent on 8000. odify line 65 in `jdk_8_maven/em/embedded/rest/languagetool/src/main/java/em/embedded/org/languagetool/EmbeddedEvoMasterController.java` to change the service port.
+The service should be running at port `8081` with jacoco agent on `8000`. Modify line 65 in `jdk_8_maven/em/embedded/rest/languagetool/src/main/java/em/embedded/org/languagetool/EmbeddedEvoMasterController.java` to change the service port.
 
 The spec is available at `http://localhost:8081/v2/swagger`. To check if it is running, send a request:
 ```
@@ -436,3 +437,28 @@ curl -i http://localhost:8081/v2/languages
 ### Ohsome API
 
 Please refer to [HOW_TO_RUN.md](https://github.com/aster-test-generation/ohsome-api/blob/master/HOW_TO_RUN.md) in Ohsome API repo.
+
+
+### Market
+
+#### Using original Jacco agent
+
+Switch to `$EMB_BASE/jdk_11_maven/em/embedded/rest/market`
+
+Run
+```
+mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
+```
+to write the whole list of dependencies to `cp.txt`.
+
+Run the service:
+```
+java -Djdk.attach.allowAttachSelf=true -javaagent:${JACOCO_LIB}/jacocoagent.jar=output=tcpserver,port=6300,destfile=jacoco.exec  -cp "./target/classes:$(cat cp.txt)" em.embedded.market.EmbeddedEvoMasterController
+```
+
+The service should be running at port `12345` with jacoco agent on `6300`. Modify line 69 in `jdk_11_maven/em/embedded/rest/market/src/main/java/em/embedded/market/EmbeddedEvoMasterController.java` to change the service port.
+
+The spec is available at `http://localhost:12345/v2/api-docs/`. To check if it is running, send a request:
+```
+curl -i http://localhost:12345/products
+```

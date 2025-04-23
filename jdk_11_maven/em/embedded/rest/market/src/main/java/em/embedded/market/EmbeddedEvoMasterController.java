@@ -39,7 +39,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         }
 
         EmbeddedEvoMasterController controller = new EmbeddedEvoMasterController(port);
-        InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
+        // InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
 
         // starter.start();
         controller.startSut();
