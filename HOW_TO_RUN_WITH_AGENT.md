@@ -49,7 +49,7 @@ Start EvoMaster in black-box mode (change the seed 100 and outputFolder if neces
 "/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/genome-nexus_evomaster_bb_v2__S100_10420"
 ```
 
-#### Option 2:
+#### Option 2: (No DB coincection)
 Change the pom.xml of genome-nexus/web/pom.xml by the below content.
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
