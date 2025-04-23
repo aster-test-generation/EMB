@@ -433,3 +433,6 @@ The spec is available at `http://localhost:8081/v2/swagger`. To check if it is r
 curl -i http://localhost:8081/v2/languages
 ```
 
+### Ohsome API
+
+Please refer to [HOW_TO_RUN.md](https://github.com/aster-test-generation/ohsome-api/blob/master/HOW_TO_RUN.md) in Ohsome API repo.
