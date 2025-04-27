@@ -462,3 +462,44 @@ The spec is available at `http://localhost:12345/v2/api-docs/`. To check if it i
 ```
 curl -i http://localhost:12345/products
 ```
+
+
+### Session-Service
+
+Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/session-service`
+
+Run
+```
+mvn clean package
+mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
+```
+to write the whole list of dependencies to `cp.txt`.
+
+Set up necessary env vars:
+
+```
+export jacocoAgentPort=8000
+export projectTargetPath=$EMB_BASE/jdk_8_maven/cs/rest/original/session-service/target/
+export projectPackage=org/cbioportal
+```
+
+Run the service:
+```
+java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -cp "./target/classes:$(cat cp.txt)" em.embedded.org.cbioportal.session_service.EmbeddedEvoMasterController
+```
+
+The service should be running at port `12345` with jacoco agent on `8000`. Modify line 71 in `jdk_8_maven/em/embedded/rest/session-service/src/main/java/em/embedded/org/cbioportal/session_service/EmbeddedEvoMasterController.java` to change the service port.
+
+The spec is available at `hhtp://localhost:12345/v2/api-docs`. To check if it is running, send a request:
+```
+curl -X GET "http://localhost:12345/info" -H "accept: */*"
+```
+or
+```
+curl -H "Content-Type: application/json" --user user:pass -X POST http://localhost:12345/api/sessions/test_portal/main_session --data '{"title": "my main portal session", "description": "this is an example"}'
+```
+
+Start EvoMaster in black-box mode (change the seed 100 and outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/session_service_evomaster_bb_v2__S100_10420"
+```

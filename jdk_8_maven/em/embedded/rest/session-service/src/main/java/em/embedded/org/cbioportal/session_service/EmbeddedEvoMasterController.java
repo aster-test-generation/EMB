@@ -32,9 +32,9 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         }
 
         EmbeddedEvoMasterController controller = new EmbeddedEvoMasterController(port);
-        InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
+        // InstrumentedSutStarter starter = new InstrumentedSutStarter(controller);
 
-        starter.start();
+        controller.startSut();
     }
 
 
@@ -68,7 +68,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         mongoClient = MongoClients.create("mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT));
 
         ctx = SpringApplication.run(SessionService.class,
-                new String[]{"--server.port=0",
+                new String[]{"--server.port=12345",
                         "--spring.data.mongodb.uri=mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT) + "/" + MONGODB_DATABASE_NAME,
                         "--spring.cache.type=NONE"
                 });
