@@ -17,6 +17,19 @@ export EMB_BASE=/home/rkh/25spring/aster/EMBv3.4.0
 
 Place the agent `realtime-jacoco-agent-1.0-SNAPSHOT.jar` in `EMB_BASE`.
 
+
+## Using mitmproxy to record traffics
+
+Install mitmproxy: https://docs.mitmproxy.org/stable/overview/installation/. `apt` or `pip` installation doesn't work on my machine. So probably you want to download the binaries directly.
+Dumping to `har` format (essentially a JSON) seems to be supported only in newer versions, so make sure to download the latest release.
+
+Set up the reverse proxy to recrod all packets:
+```
+./mitmdump -p 9001 --mode reverse:http://localhost:12345 --set hardump=feature-services_203.har
+```
+
+Here `12345` is the port the REST service is running on, and `9001` is the port your testing tool is sending requests to. `feature-services_203.har` is the path you want to save the packets to a file.
+
 ### Genome Nexus
 
 Switch to `$EMB_BASE/jdk_8_maven/em/embedded/rest/genome-nexus`
@@ -49,7 +62,7 @@ Start EvoMaster in black-box mode (change the seed 100 and outputFolder if neces
 "/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/genome-nexus_evomaster_bb_v2__S100_10420"
 ```
 
-#### Option 2: (No DB coincection)
+#### Option 2: (No DB coincection?)
 Change the pom.xml of genome-nexus/web/pom.xml by the below content.
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -434,6 +447,11 @@ The spec is available at `http://localhost:8081/v2/swagger`. To check if it is r
 curl -i http://localhost:8081/v2/languages
 ```
 
+Start EvoMaster in black-box mode (change the seed 105 and the 105 in outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:8081/v2/swagger --bbTargetUrl http://localhost:8081/ --seed 105 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/languagetools_evomaster_bb_v2__S105_11890"
+```
+
 ### Ohsome API
 
 Please refer to [HOW_TO_RUN.md](https://github.com/aster-test-generation/ohsome-api/blob/master/HOW_TO_RUN.md) in Ohsome API repo.
@@ -461,6 +479,11 @@ The service should be running at port `12345` with jacoco agent on `6300`. Modif
 The spec is available at `http://localhost:12345/v2/api-docs/`. To check if it is running, send a request:
 ```
 curl -i http://localhost:12345/products
+```
+
+Start EvoMaster in black-box mode (change the seed 103 and the 103 in outputFolder if necessary):
+```
+"/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb1/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs/  --bbTargetUrl http://localhost:12345/  --seed 103 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder /home/rhuang329/JacocoLive/market_jacoco/market_103/
 ```
 
 
