@@ -457,6 +457,10 @@ Start EvoMaster in black-box mode (change the seed 105 and the 105 in outputFold
 Please refer to [HOW_TO_RUN.md](https://github.com/aster-test-generation/ohsome-api/blob/master/HOW_TO_RUN.md) in Ohsome API repo.
 
 
+### ofbiz-framework
+
+Please refer to [HOW_TO_RUN_WITH_AGENT.md](https://github.com/aster-test-generation/ofbiz-framework/blob/trunk/HOW_TO_RUN_WITH_AGENT.md) in ofbiz-framework API repo.
+
 ### Market
 
 #### Using original Jacco agent
