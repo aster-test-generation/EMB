@@ -530,3 +530,48 @@ Start EvoMaster in black-box mode (change the seed 100 and outputFolder if neces
 ```
 "/usr/lib/jvm/java-8-openjdk-amd64/jre/"/bin/java -Xms1G -Xmx4G -jar ~/aster-exp/wb/evomaster.jar --blackBox true --maxTime 3600s --bbSwaggerUrl http://localhost:12345/v2/api-docs --bbTargetUrl http://localhost:12345 --seed 100 --showProgress=true --testSuiteSplitType=NONE  --outputFormat JAVA_JUNIT_4 --outputFolder "/home/rhuang329/aster-exp/bb/tests/session_service_evomaster_bb_v2__S100_10420"
 ```
+
+### shopizer
+
+Use Java 11
+
+Clone the project from [GitHub](https://github.com/shopizer-ecommerce/shopizer)
+
+<!-- Check out to version `v3.2.5`
+```
+git checkout v3.2.5
+```
+
+Build the project:
+```
+./mvnw clean install -DskipTests
+``` -->
+
+Place `shopizer.jar` under `sm-shop`.
+
+Extract class files from the jar:
+```
+unzip ./sm-shop/shopizer.jar -d ./extracted_jar
+```
+
+Set up necessary env vars:
+
+```
+export jacocoAgentPort=8000
+export projectTargetPath=$(pwd)/extracted_jar/BOOT-INF/
+export projectPackage=com/salesmanager/shop
+```
+
+Run the service:
+```
+java -Djdk.attach.allowAttachSelf=true -javaagent:"${EMB_BASE}/realtime-jacoco-agent-1.0-SNAPSHOT.jar" -jar shopizer.jar
+```
+
+The service should be running at port `8080` with jacoco agent on `8000`. 
+
+The spec is available at `http://localhost:8080/swagger-ui.html`. To check if it is running, send a request:
+```
+curl -X GET "http://localhost:8080/api/v1/country" -H  "accept: application/json"
+```
+
+If at any points, it asks credentials to log in, use username `admin@shopizer.com` and password `password`.
